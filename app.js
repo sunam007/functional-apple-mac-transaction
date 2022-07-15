@@ -1,3 +1,5 @@
+// function for getting total price
+
 function updateTotalPrice() {
   const totalPriceText = document.getElementById("total-price");
   const bestPriceText = document.getElementById("best-price").innerText;
@@ -12,6 +14,12 @@ function updateTotalPrice() {
     parseInt(deliveryCostText);
   totalPriceText.innerText = totalPrice;
   footerTotalPriceText.innerText = totalPrice;
+  const promoCodeInputText = document.getElementById("promo-input");
+  if (promoCodeInputText.value == "stevekaku") {
+    totalPriceText.innerText = totalPrice - totalPrice * 0.2;
+    footerTotalPriceText.innerText = totalPrice - totalPrice * 0.2;
+  }
+
   return totalPriceText.innerText;
 }
 
@@ -58,5 +66,10 @@ document.getElementById("free-delivery").addEventListener("click", function () {
 document.getElementById("paid-delivery").addEventListener("click", function () {
   const deliveryCostText = document.getElementById("delivery-price");
   deliveryCostText.innerText = 20;
+  updateTotalPrice();
+});
+
+//promo code button-action
+document.getElementById("promo-code").addEventListener("click", function () {
   updateTotalPrice();
 });
