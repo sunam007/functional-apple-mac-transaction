@@ -15,9 +15,14 @@ function updateTotalPrice() {
   totalPriceText.innerText = totalPrice;
   footerTotalPriceText.innerText = totalPrice;
   const promoCodeInputText = document.getElementById("promo-input");
+
+  // when promo code is applied; prom code: stevekaku
   if (promoCodeInputText.value == "stevekaku") {
     totalPriceText.innerText = totalPrice - totalPrice * 0.2;
     footerTotalPriceText.innerText = totalPrice - totalPrice * 0.2;
+    promoCodeInputText.value = "";
+  } else {
+    promoCodeInputText.value = "";
   }
 
   return totalPriceText.innerText;
